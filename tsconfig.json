@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+      "module": "commonjs",
+      "target": "es2021",
+      "noImplicitAny": true,
+      "removeComments": false,
+      "preserveConstEnums": true,
+      "sourceMap": false,
+      "lib": ["ES2021", "DOM"],
+      "outDir": "dist",
+      "moduleResolution": "node",
+      "pretty": true,
+      "resolveJsonModule": true,
+    },
+}
