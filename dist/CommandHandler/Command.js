@@ -8,10 +8,16 @@ class Command {
         if (options) {
             this.permission = options.permission ?? null;
             this.aliases = options.aliases ?? [];
+            this.flags = options.flags ?? [];
+            this.description = options.description ?? null;
+            this.expectedUsage = options.expectedUsage ?? null;
         }
         else {
             this.permission = null;
             this.aliases = [];
+            this.flags = [];
+            this.description = null;
+            this.expectedUsage = null;
         }
     }
 }

@@ -8,16 +8,25 @@ export type CommandCallback = (
 
 export interface Command {
   func: CommandCallback;
-  name: String;
+  name: string;
   permission?: PermissionResolvable;
-  aliases: String[];
+  flags: string[];
+  aliases: string[];
+  description: string;
+  expectedUsage: string;
 }
 
 export class Command {
   constructor(
-    name: String,
+    name: string,
     func: CommandCallback,
-    options?: { permission?: PermissionResolvable; aliases?: String[] }
+    options?: {
+      permission?: PermissionResolvable;
+      aliases?: string[];
+      flags?: string[];
+      description?: string;
+      expectedUsage?: string;
+    }
   ) {
     this.name = name;
     this.func = func;
@@ -25,9 +34,15 @@ export class Command {
     if (options) {
       this.permission = options.permission ?? null;
       this.aliases = options.aliases ?? [];
+      this.flags = options.flags ?? [];
+      this.description = options.description ?? null;
+      this.expectedUsage = options.expectedUsage ?? null;
     } else {
       this.permission = null;
       this.aliases = [];
+      this.flags = [];
+      this.description = null;
+      this.expectedUsage = null;
     }
   }
 }

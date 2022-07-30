@@ -34,7 +34,13 @@ export class CommandHandler {
   register(
     name: string,
     callback: CommandCallback,
-    options?: { permission?: PermissionResolvable; aliases?: string[] }
+    options?: {
+      permission?: PermissionResolvable;
+      aliases?: string[];
+      flags?: string[];
+      description?: string;
+      expectedUsage?: string;
+    }
   ): Command {
     let command = new Command(name, callback, options);
     this.commands.push(command);

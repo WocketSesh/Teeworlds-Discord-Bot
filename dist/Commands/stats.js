@@ -64,22 +64,22 @@ const stats = async (message, command, _) => {
             let difficulty = args.find((x) => x.flag == "-difficulty" || x.flag == "-d").arg;
             if (!difficulties.includes(difficulty.toLowerCase()))
                 return message.channel.send("Incorrect difficulty provided.");
-            let x = maps.find((x) => x.difficulty.toLowerCase() == difficulty);
-            map = x.maps.find((y) => y.name.toLowerCase() == mapName);
+            let x = maps.find((x) => x.difficulty.toLowerCase() == difficulty.toLowerCase());
+            map = x.maps.find((y) => y.name.toLowerCase() == mapName.toLowerCase());
             didYouMean.push(...maps
                 .find((x) => x.difficulty.toLowerCase() == difficulty.toLowerCase())
-                .maps.filter((x) => x.name.toLowerCase().startsWith(mapName))
+                .maps.filter((x) => x.name.toLowerCase().startsWith(mapName.toLowerCase()))
                 .map((x) => x.name));
         }
         else {
             for (let i = 0; i < maps.length; i++) {
-                let x = maps[i].maps.find((x) => x.name.toLowerCase() == mapName);
+                let x = maps[i].maps.find((x) => x.name.toLowerCase() == mapName.toLowerCase());
                 if (x) {
                     map = x;
                     break;
                 }
                 didYouMean.push(...maps[i].maps
-                    .filter((x) => x.name.toLowerCase().startsWith(mapName))
+                    .filter((x) => x.name.toLowerCase().startsWith(mapName.toLowerCase()))
                     .map((x) => x.name));
             }
         }
